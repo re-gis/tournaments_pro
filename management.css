@@ -60,6 +60,8 @@ li>a {
     flex-direction: column;
     align-items: center;
     padding: 5% 20px 5% 5px;
+
+
 }
 
 .body-lay-content {
@@ -88,6 +90,7 @@ li>a {
     gap: 20px;
     background-color: #fff;
     padding-top: 20px;
+    margin-top: 3%;
     padding-bottom: 20px;
 }
 
@@ -207,6 +210,15 @@ tbody {
     cursor: pointer;
 }
 
+.close-btn {
+    background-color: rgb(213, 200, 14);
+    border: none;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .table-footer {
     display: flex;
     align-items: center;
@@ -230,4 +242,14 @@ tbody {
     justify-items: center;
     padding: 5% 10%;
     align-items: center;
+}
+
+
+.btn-to-open {
+    background-color: rgb(71, 71, 65);
+    border: none;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
 }

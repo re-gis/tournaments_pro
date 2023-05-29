@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 8%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    background-color: #535050;
+    color: #fff;
+}
+
+.user_dash {
+    font-size: 8px;
+}
+
+.nav>ul {
+    display: flex;
+    gap: 20px;
+    color: #fff;
+}
+
+.nav>ul {
+    color: #fff;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+li>a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+
+.body-lay {
+    background-color: #ccc;
+    height: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5% 0px;
+    padding-right: 20px;
+}
+
+.body-lay-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #ebe5e1;
+    width: 100%;
+    gap: 20px;
+}
+
+.body-lay-header {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    border-bottom: 1px solid #ccc;
+}
+.body-lay-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.body-lay-header>h4 {
+    font-weight: bolder;
+}

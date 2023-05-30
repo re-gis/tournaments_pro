@@ -5,7 +5,7 @@ $password = "";
 $db = "progetto";
 
 $conn = mysqli_connect($host, $user, $password, $db);
-if(!$conn){
- echo "Error: " . mysqli_connect_error;
+if ($conn -> connect_error) {
+    die('Connection failed ' . $conn -> connect_error);
 }
 ?>

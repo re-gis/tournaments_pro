@@ -1,25 +1,31 @@
 <?php
-session_start();
-include_once 'config.php';
-$email = mysqli_real_escape_string( $conn, $_POST[ 'username' ] );
-$password = mysqli_real_escape_string( $conn, $_POST[ 'password' ] );
-if(isset($_POST['submit'])){
-    $email = $_POST['username'];
-    $password = $_POST['password'];
-    if ( !empty( $email ) && !empty( $password ) ) {
-        $sql = mysqli_query( $conn, "SELECT * FROM users WHERE email = '{$email}' AND password = '{$password}'" );
-        if ( mysqli_num_rows( $sql ) > 0 ) {
-            
-            $row = mysqli_fetch_assoc( $sql );
-            $_SESSION[ 'unique_id' ] = $row[ 'unique_id' ];
-            echo 'Success!';
-        } else {
-            echo 'Email or password is incorrect!';
+    include_once '../config/config.php';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // QUERRY THE DATABASE TO SEE IF THE USER EXISTS AND THE PASSWORD IS CORRECT
+        $result = $conn -> query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+
+        // CHECK FOR ERRORS
+        if (!$result) {
+            echo "Error: " . $mysqli -> error;
+            exit();
         }
-    } else {
-        echo 'All inputs are required!';
+
+        // CHECK IF THE QUERRY RETURNED ANY ROWS
+        if ($result -> num_rows > 0) {
+            // USER IS AUTHENTICATED, CREATE A SESSION
+            session_start();
+            $_SESSION["username"] = $username;
+            $_SESSION["email"] = $email;
+
+            // REDIRECT TO THE APPROPRIATE PAGE
+            header("Location: ../../dashboard/dash.php");
+            exit();
+        }else {
+            // INVALID CREDENTIALS, THROW AN ERROR
+            echo 'Invalid username or password';
+        }
     }
-} else {
-    echo "error";
-}
 ?>

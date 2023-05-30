@@ -53,12 +53,14 @@ li>a {
 
 .body-lay {
     padding: 5px;
+    display: flex;
+    gap: 5%;
 }
 
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     width: 15%;
 }
 
@@ -106,7 +108,30 @@ li>a {
     border-bottom: none;
 }
 
-
 .menu-bottom {
-    background-color: red;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
+.menu-bottom-container {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    background-color: #ddd;
+}
+
+.menu-bottom-container-two {
+    padding: 5px;
+}
+
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.body-content-top {
+    display: flex;
+    flex-direction: column;
+}
+

@@ -6,7 +6,7 @@
 
 <div class="nav">
     <ul>
-        <li><a href="home.php">Home</a></li>
+        <li><a href="dash.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li>Welcome</li><?php echo $username; ?>
         <li>

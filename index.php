@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./registration/login.css">
   </head>
   <body>
     <div class="body">
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-lay">
-        <form action="../backend/registration_backend/login.php" method="post">
+        <form action="./backend/registration_backend/login.php" method="post">
           <div class="form-controll">
             <label class="label-lay" for="username">Username</label>
             <input
@@ -38,7 +38,7 @@
             />
           </div>
           <div>
-            <a class="link-lay" href="signup.html">Create New Account</a>
+            <a class="link-lay" href="./registration/signup.php">Create New Account</a>
           </div>
 
           <div class="btn-lay">

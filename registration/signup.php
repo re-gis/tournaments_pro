@@ -71,7 +71,7 @@
             />
           </div>
           <div>
-            <a class="link-lay" href="login.html">Login using your account</a>
+            <a class="link-lay" href="login.php">Login using your account</a>
           </div>
 
           <div class="btn-lay">

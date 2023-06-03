@@ -24,31 +24,34 @@
         <div class="body-lay-content">
           <div class="body-lay-table">
             <div class="body-lay-table-header">
-              <div class="selections">
+            <div class="selections">
+              <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="entriesForm">
                 <span>Show</span>
-                <select name="entries" id="entries">
-                  <option value="one">10</option>
-                  <option value="one">1</option>
-                  <option value="two">2</option>
-                  <option value="three">3</option>
-                  <option value="four">4</option>
-                  <option value="five">5</option>
-                  <option value="five">6</option>
-                  <option value="five">7</option>
-                  <option value="five">8</option>
-                  <option value="five">9</option>
-                  <option value="five">10</option>
+                <select name="selected_entries" id="entries">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
                 </select>
+                <input type="hidden" value="show entries">
                 <span>entries</span>
-              </div>
+              </form>
+            </div>
 
               <div class="search-input">
                 <label for="search">Search: </label>
-                <input type="text" />
+                <input id="searchInput" name="search" type="text" />
               </div>
             </div>
             <div class="table-lay">
-              <table class="table">
+              <table id="dataTable" class="table">
                 <thead>
                   <td>ID</td>
                   <td>Teams</td>
@@ -63,10 +66,15 @@
                   <td>End Date Transfer</td>
                   <td></td>
                 </thead>
-
                 <?php
                   include_once('../backend/config/config.php');
-                  $sql = "SELECT * FROM my_tournaments";
+                  
+                  if (isset($_POST['selected_entries'])) {
+                    $selectedEntries = $_POST['selected_entries'];
+                    $sql = "SELECT * FROM my_tournaments LIMIT $selectedEntries";
+                  } else {
+                    $sql = "SELECT * FROM my_tournaments";
+                  }
 
                   $query = $conn->query($sql);
                   while($row = $query->fetch_assoc()){
@@ -85,7 +93,7 @@
                       <td>".$row['transfer_enddate']."</td>
                       <td>
                         <button class='info-btn'>INFO</button>
-                        <button class='sub-btn'>MANAGE</button>
+                        <button class='sub-btn'><a style='text-decoration: none; color: white;' href='./chooseTeam/chooseTeam.php'>MANAGE</a></button>
                         
                       </td>
                     </tr>";
@@ -105,5 +113,34 @@
         </div>
       </div>
     </div>
+<script>
+    function searchTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dataTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  document.getElementById("searchInput").addEventListener("input", searchTable);
+</script>
+<script>
+  document.getElementById('entries').addEventListener('change', function() {
+    document.getElementById('entriesForm').submit();
+  });
+</script>
   </body>
 </html>

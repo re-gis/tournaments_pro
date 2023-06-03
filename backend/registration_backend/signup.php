@@ -36,10 +36,6 @@
       $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     }
     if (empty($name_err) && empty($email_err) && empty($password_err && empty($username_err) && empty($contact_err))) {
-    //   $result = $conn -> query("SELECT * FROM users WHERE username='$username' AND password='$password'");
-    //   if ($result) {
-    //     echo 'User already exists!';
-    //   }else {
         $sql = "INSERT INTO users (name, contact, email, username, password) VALUES ('$name', '$contact', '$email', '$username', '$password')";
         if (mysqli_query($conn, $sql)) {
           session_start();
